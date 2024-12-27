@@ -55,9 +55,12 @@ HTMLActuator.prototype.addTile = function (tile) {
   var positionClass = this.positionClass(position);
 
   // We can't use classlist because it somehow glitches when replacing classes
-  var classes = ["tile", "tile-" + tile.value, positionClass];
+  var pos = NameArray.indexOf(tile.value);
+  var tileValue = Math.pow(2,pos+2)
 
-  if (tile.value > 2048) classes.push("tile-super");
+  var classes = ["tile", "tile-" + tileValue, positionClass];
+
+  if (tileValue > 2048) classes.push("tile-super");
 
   this.applyClasses(wrapper, classes);
 
